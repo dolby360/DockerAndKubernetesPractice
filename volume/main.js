@@ -16,5 +16,8 @@ app.get('/', (req, res) => {
 
 })
 
+console.log('The value of SOME_GLOBAL_ENV_VAR is:', process.env.SOME_GLOBAL_ENV_VAR);
+console.log('The value of SOME_GLOBAL_ENV_VAR is:', process.env.MY_ARG);
+
 app.listen(3000);
 
