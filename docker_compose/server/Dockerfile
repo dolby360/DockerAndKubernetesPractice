@@ -1,5 +1,6 @@
 FROM python:3.10
-# COPY requirements.txt /app
-# RUN pip install -e ./app/requirements.txt
+WORKDIR /app
+COPY requirements.txt /app
+RUN pip install -r ./requirements.txt
 COPY . /app
-CMD [ "python", "./app/server.py" ]
+CMD [ "python", "-u", "./server.py" ]

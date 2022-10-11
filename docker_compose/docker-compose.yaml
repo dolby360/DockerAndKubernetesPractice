@@ -1,14 +1,23 @@
 version: "3.8"
 services:
   database:
-    image: ubuntu/mysql:edge
+    container_name: database
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: some_password
+    volumes:
+      - "db_data:/var/lib/mysql"
   backend:
+    container_name: backend
     build: ./server
     volumes:
       - ./server:/app
     stdin_open: false
     tty: false
   client:
+    container_name: client
     build: ./client
     volumes:
       - ./client:/app
@@ -16,3 +25,5 @@ services:
     tty: true
     depends_on: 
       - backend
+volumes:
+  db_data:
